@@ -14,7 +14,7 @@ public enum Direction {
 
 		@Override
 		public Position moveForward(Position current) {
-			return new Position(current.getX() + 1, current.getY(), this);
+			return new Position(current.getX(), current.getY() + 1, this);
 		}
 	},
 	SOUTH {
@@ -30,7 +30,7 @@ public enum Direction {
 
 		@Override
 		public Position moveForward(Position current) {
-			return new Position(current.getX() - 1, current.getY(), this);
+			return new Position(current.getX(), current.getY() - 1, this);
 		}
 	},
 	EAST {
@@ -46,7 +46,7 @@ public enum Direction {
 
 		@Override
 		public Position moveForward(Position current) {
-			return new Position(current.getX(), current.getY() + 1, this);
+			return new Position(current.getX() + 1, current.getY(), this);
 		}
 	},
 	WEST {
@@ -62,7 +62,7 @@ public enum Direction {
 
 		@Override
 		public Position moveForward(Position current) {
-			return new Position(current.getX(), current.getY() - 1, this);
+			return new Position(current.getX() - 1, current.getY(), this);
 		}
 	};
 

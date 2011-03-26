@@ -63,30 +63,30 @@ public class RoverTest {
 	}
 
 	@Test
-	public void movesInXIfInstructionIsMAndDirectionIsN() {
+	public void movesInYIfInstructionIsMAndDirectionIsN() {
 		Rover rover = new Rover(new Position(1, 1, NORTH));
 		Position position = rover.command('M');
-		assertEquals(new Position(2, 1, NORTH), position);
+		assertEquals(new Position(1, 2, NORTH), position);
 	}
 
 	@Test
-	public void movesInYIfInstructionIsMAndDirectionIsE() {
+	public void movesInXIfInstructionIsMAndDirectionIsE() {
 		Rover rover = new Rover(new Position(1, 1, EAST));
 		Position position = rover.command('M');
-		assertEquals(new Position(1, 2, EAST), position);
+		assertEquals(new Position(2, 1, EAST), position);
 	}
 
 	@Test
-	public void movesInReverseXIfInstructionIsMAndDirectionIsS() {
+	public void movesInReverseYIfInstructionIsMAndDirectionIsS() {
 		Rover rover = new Rover(new Position(1, 1, SOUTH));
 		Position position = rover.command('M');
-		assertEquals(new Position(0, 1, SOUTH), position);
+		assertEquals(new Position(1, 0, SOUTH), position);
 	}
 
 	@Test
-	public void movesInReverseYIfInstructionIsMAndDirectionIsW() {
+	public void movesInReverseXIfInstructionIsMAndDirectionIsW() {
 		Rover rover = new Rover(new Position(1, 1, WEST));
 		Position position = rover.command('M');
-		assertEquals(new Position(1, 0, WEST), position);
+		assertEquals(new Position(0, 1, WEST), position);
 	}
 }
