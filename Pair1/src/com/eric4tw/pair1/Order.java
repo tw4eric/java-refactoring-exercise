@@ -13,23 +13,16 @@ public class Order {
 		this.price = BigDecimal.valueOf(price);
 		this.quantity = quantity;
 	}
-
-	@Override
-	public String toString() {
-		return new StringBuilder().append(description).append('\t')
-				.append(price).append('\t').append(quantity).append('\t')
-				.append(price.multiply(BigDecimal.valueOf(quantity)))
-				.toString();
+	
+	public String getDescription() {
+		return description;
 	}
 
-	public BigDecimal salesTax() {
-		return price.multiply(BigDecimal.valueOf(quantity)).multiply(
-				BigDecimal.valueOf(.10));
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public BigDecimal totalAmount() {
-		return price.multiply(BigDecimal.valueOf(quantity)).add(
-				price.multiply(BigDecimal.valueOf(quantity)).multiply(
-						BigDecimal.valueOf(.10)));
+	public int getQuantity() {
+		return quantity;
 	}
 }
