@@ -63,16 +63,16 @@ public class Rover {
 		case 'M':
 			switch (current.getDirection()) {
 			case 'N':
-				current.setX(current.getX() + 1);
-				break;
-			case 'S':
-				current.setX(current.getX() - 1);
-				break;
-			case 'E':
 				current.setY(current.getY() + 1);
 				break;
-			case 'W':
+			case 'S':
 				current.setY(current.getY() - 1);
+				break;
+			case 'E':
+				current.setX(current.getX() + 1);
+				break;
+			case 'W':
+				current.setX(current.getX() - 1);
 				break;
 			default:
 				break;
