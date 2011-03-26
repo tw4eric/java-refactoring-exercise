@@ -62,7 +62,7 @@ public class SalaryTest {
 
 	@Test
 	public void taxForSeniorCitizenIfInThirdIncomeSlab() {
-		assertEquals(78000.0, new Salary('M', 60, 810000).calculatetax(), 0.1);
+		assertEquals(88000.0, new Salary('M', 60, 810000).calculatetax(), 0.1);
 	}
 
 	@Test

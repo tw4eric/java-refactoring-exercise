@@ -41,7 +41,7 @@ public class Salary {
 				return (totalSalary - 250000) * 0.10;
 			if (totalSalary <= 800000)
 				return 25000 + (totalSalary - 500000) * 0.20;
-			return 75000 + (totalSalary - 800000) * 0.30;
+			return 85000 + (totalSalary - 800000) * 0.30;
 		}
 
 		// for very senior citizens
