@@ -3,6 +3,7 @@ package com.eric4tw.pair1;
 import java.math.BigDecimal;
 
 public class Order {
+	private static final double SALES_TAX = .10;
 	private String description;
 	private BigDecimal price;
 	private int quantity;
@@ -26,7 +27,7 @@ public class Order {
 	}
 
 	public BigDecimal salesTax() {
-		return orderAmount().multiply(BigDecimal.valueOf(.10));
+		return orderAmount().multiply(BigDecimal.valueOf(SALES_TAX));
 	}
 
 	public BigDecimal total() {
