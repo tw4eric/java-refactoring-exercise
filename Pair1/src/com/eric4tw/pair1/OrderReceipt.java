@@ -22,46 +22,41 @@ public class OrderReceipt {
 
 	public String printReceipt() {
 		StringBuilder output = new StringBuilder();
-
-		// print headers
-		output.append("======Printing Orders======\n");
-
-		// print date, bill no, customer name
-
-		// prints orders
-		BigDecimal salesTax = new BigDecimal("0");
-		BigDecimal totalAmount = new BigDecimal(0.0);
-		for (Order order : orders) {
-			output.append(order.getDescription());
-			output.append('\t');
-			output.append(order.getPrice());
-			output.append('\t');
-			output.append(order.getQuantity());
-			output.append('\t');
-			output.append(order.getPrice().multiply(
-					BigDecimal.valueOf(order.getQuantity())));
-			output.append('\n');
-
-			// calculate sales tax @ rate of 10%
-			salesTax = salesTax.add(order.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.multiply(BigDecimal.valueOf(.10)));
-
-			// calculate total amount of order = price * quantity + 10 % sales
-			// tax
-			totalAmount = totalAmount.add(order
-					.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.add(order.getPrice()
-							.multiply(BigDecimal.valueOf(order.getQuantity()))
-							.multiply(BigDecimal.valueOf(.10))));
-		}
-
-		// prints the state tax
-		output.append("Sales Tax").append('\t').append(salesTax);
-
-		// print total amount
-		output.append("Total Amount").append('\t').append(totalAmount);
+		output.append(headers());
+		output.append(orders());
+		output.append(salesTax());
+		output.append(totalAmount());
 		return output.toString();
+	}
+
+	private String totalAmount() {
+		BigDecimal totalAmount = BigDecimal.ZERO;
+		for (Order order : orders) {
+			totalAmount = totalAmount.add(order.total());
+		}
+		return new StringBuilder().append("Total Amount").append('\t')
+				.append(totalAmount).toString();
+	}
+
+	private String salesTax() {
+		BigDecimal salesTax = BigDecimal.ZERO;
+		for (Order order : orders) {
+			salesTax = salesTax.add(order.salesTax());
+		}
+		return new StringBuilder().append("Sales Tax").append('\t')
+				.append(salesTax).toString();
+	}
+
+	private String orders() {
+		StringBuilder orderOutput = new StringBuilder();
+		for (Order order : orders) {
+			orderOutput.append(order.toString());
+		}
+		return orderOutput.toString();
+	}
+
+	private String headers() {
+		return new StringBuilder().append("======Printing Orders======\n")
+				.toString();
 	}
 }
