@@ -13,10 +13,10 @@ import java.util.List;
  * @author amiruddinnagri
  * 
  */
-public class OrderReceipt {
+public class OrderReceipt2 {
 	public List<Order> orders;
 
-	public OrderReceipt(List<Order> orders) {
+	public OrderReceipt2(List<Order> orders) {
 		this.orders = new ArrayList<Order>(orders);
 	}
 
@@ -25,15 +25,7 @@ public class OrderReceipt {
 		output.append("======Printing Orders======\n");
 
 		for (Order order : orders) {
-			output.append(order.getDescription());
-			output.append('\t');
-			output.append(order.getPrice());
-			output.append('\t');
-			output.append(order.getQuantity());
-			output.append('\t');
-			output.append(order.getPrice().multiply(
-					BigDecimal.valueOf(order.getQuantity())));
-			output.append('\n');
+			output.append(order.toString());
 		}
 
 		BigDecimal salesTax = new BigDecimal("0");
@@ -54,7 +46,8 @@ public class OrderReceipt {
 							.multiply(BigDecimal.valueOf(.10))));
 		}
 		output.append("Total Amount").append('\t').append(totalAmount);
-		
+
 		return output.toString();
 	}
+
 }
