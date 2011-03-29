@@ -2,17 +2,15 @@ package com.tw4eric.samples;
 
 // conditional by strategy
 public class Person {
-	private final char gender;
+	private final Gender gender;
 	private final int age;
 
-	public Person(char gender, int age) {
+	public Person(Gender gender, int age) {
 		this.gender = gender;
 		this.age = age;
 	}
 
 	public boolean canMarry() {
-		if (gender == 'M')
-			return age >= 21;
-		return age >= 18;
+		return gender.canMarry(age);
 	}
 }
