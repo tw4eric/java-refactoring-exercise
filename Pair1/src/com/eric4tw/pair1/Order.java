@@ -2,6 +2,10 @@ package com.eric4tw.pair1;
 
 import java.math.BigDecimal;
 
+
+
+
+
 public class Order {
 	private String description;
 	private BigDecimal price;
