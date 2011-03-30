@@ -22,7 +22,7 @@ public class OrderReceiptTest {
 	public void printReceiptPrintsHeader() throws Exception {
 		OrderReceipt orderReceipt = new OrderReceipt(orders);
 		String output = orderReceipt.printReceipt();
-		assertTrue(output.startsWith("======Printing Orders======"));
+		assertTrue(output.startsWith("======Printing Orders======="));
 	}
 
 	@Test

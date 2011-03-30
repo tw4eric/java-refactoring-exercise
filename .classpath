@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry path="Pair1/src" kind="src"/>
+	<classpathentry path="Pair1/test" kind="src"/>
+	<classpathentry path="Pair2/src" kind="src"/>
+	<classpathentry path="Pair2/test" kind="src"/>
+	<classpathentry path="Pair3/src" kind="src"/>
+	<classpathentry path="Pair3/test" kind="src"/>
+	<classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER" kind="con"/>
+	<classpathentry path="C:/Users/ekrinim/Desktop/My Folder/Downloads/junit-4.9b2.jar" kind="lib"/>
+	<classpathentry path="C:/Users/ekrinim/Desktop/My Folder/Downloads/mockito-all-1.8.5.jar" kind="lib"/>
+	<classpathentry path="bin" kind="output"/>
+</classpath>
