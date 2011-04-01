@@ -1,37 +1,61 @@
 package com.eric4tw.pair2;
 
+
+
+/**
+ * Understands position 
+ * @author esigaje
+ *
+ */
 public class Position {
-	private int x, y;
-	private char direction;
+	
+	private static final char MOVE = 'M';
+	private static final char RIGHT = 'R';
+	private static final char LEFT = 'L';
 
-	public Position(int x, int y, char direction) {
-		super();
-		this.x = x;
-		this.y = y;
+	
+	private Cordinate cordinate;
+	private Direction direction;
+	
+	
+	public Position(int aX, int aY, Direction direction) {
+		cordinate = new Cordinate(aX,aY);
 		this.direction = direction;
 	}
 
-	public int getX() {
-		return x;
+	public void move(char instruction) {
+		switch (instruction) {
+		
+		case LEFT:
+			turnLeft();
+			break;
+		
+		case RIGHT:
+			turnRight();
+			break;
+		case MOVE:
+			moveAhead();
+			break;
+		default:
+			break;
+		}
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public void moveAhead() {
+		cordinate.add(direction.moveAhead());
 	}
 
-	public int getY() {
-		return y;
+	public void turnRight() {
+		direction = direction.turnRight();
 	}
 
-	public void setY(int y) {
-		this.y = y;
+
+	public void turnLeft() {
+		direction = direction.turnLeft();
 	}
 
-	public char getDirection() {
-		return direction;
+	public Object getDirection() {
+			return direction;
 	}
 
-	public void setDirection(char direction) {
-		this.direction = direction;
-	}
 }
