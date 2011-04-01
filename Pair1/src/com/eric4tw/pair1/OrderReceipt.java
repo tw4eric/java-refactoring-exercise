@@ -23,45 +23,34 @@ public class OrderReceipt {
 	public String printReceipt() {
 		StringBuilder output = new StringBuilder();
 
-		// print headers
 		output.append("======Printing Orders======\n");
 
-		// print date, bill no, customer name
-
-		// prints orders
 		BigDecimal salesTax = new BigDecimal("0");
 		BigDecimal totalAmount = new BigDecimal(0.0);
 		for (Order order : orders) {
-			output.append(order.getDescription());
-			output.append('\t');
-			output.append(order.getPrice());
-			output.append('\t');
-			output.append(order.getQuantity());
-			output.append('\t');
-			output.append(order.getPrice().multiply(
-					BigDecimal.valueOf(order.getQuantity())));
-			output.append('\n');
-
-			// calculate sales tax @ rate of 10%
-			salesTax = salesTax.add(order.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.multiply(BigDecimal.valueOf(.10)));
-
-			// calculate total amount of order = price * quantity + 10 % sales
-			// tax
-			totalAmount = totalAmount.add(order
-					.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.add(order.getPrice()
-							.multiply(BigDecimal.valueOf(order.getQuantity()))
-							.multiply(BigDecimal.valueOf(.10))));
+			output.append(order.toString());
+			salesTax = calculateSalesTax(salesTax, order);
+			totalAmount = calculateTotalAmount(totalAmount, order);
 		}
 
-		// prints the state tax
 		output.append("Sales Tax").append('\t').append(salesTax);
-
-		// print total amount
 		output.append("Total Amount").append('\t').append(totalAmount);
 		return output.toString();
+	}
+
+	private BigDecimal calculateTotalAmount(BigDecimal totalAmount, Order order) {
+		totalAmount = totalAmount.add(order.getPrice().multiply(
+				BigDecimal.valueOf(order.getQuantity())).add(
+				order.getPrice().multiply(
+						BigDecimal.valueOf(order.getQuantity())).multiply(
+						BigDecimal.valueOf(.10))));
+		return totalAmount;
+	}
+
+	private BigDecimal calculateSalesTax(BigDecimal salesTax, Order order) {
+		salesTax = salesTax.add(order.getPrice().multiply(
+				BigDecimal.valueOf(order.getQuantity())).multiply(
+				BigDecimal.valueOf(.10)));
+		return salesTax;
 	}
 }
