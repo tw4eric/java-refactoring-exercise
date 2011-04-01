@@ -1,37 +1,74 @@
 package com.eric4tw.pair2;
 
 public class Position {
-	private int x, y;
-	private char direction;
+	private Coordinate coordinate;
 
-	public Position(int x, int y, char direction) {
+	private Direction direction;
+
+	public Position(Coordinate coordinate, Direction direction) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.coordinate = coordinate;
 		this.direction = direction;
 	}
 
-	public int getX() {
-		return x;
+	public Position(int x, int y, Direction direction) {
+		this(new Coordinate(x, y), direction);
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public char getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
-	public void setDirection(char direction) {
-		this.direction = direction;
+	public void moveAhead() {
+		Coordinate deltaAxis = direction.moveAhead();
+
 	}
+
+	public void trunRight() {
+		direction = direction.turnRight();
+	}
+
+	void turnLeft() {
+		direction = direction.turnLeft();
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result
+				+ ((direction == null) ? 0 : direction.hashCode());
+		result = PRIME * result
+				+ ((coordinate == null) ? 0 : coordinate.hashCode());
+		result = PRIME * result + ((yAxis == null) ? 0 : yAxis.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Position other = (Position) obj;
+		if (direction == null) {
+			if (other.direction != null)
+				return false;
+		} else if (!direction.equals(other.direction))
+			return false;
+		if (coordinate == null) {
+			if (other.coordinate != null)
+				return false;
+		} else if (!coordinate.equals(other.coordinate))
+			return false;
+		if (yAxis == null) {
+			if (other.yAxis != null)
+				return false;
+		} else if (!yAxis.equals(other.yAxis))
+			return false;
+		return true;
+	}
+
 }
