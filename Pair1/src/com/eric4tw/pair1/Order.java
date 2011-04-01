@@ -14,7 +14,7 @@ public class Order {
 		this.quantity = quantity;
 	}
 	
-	public String getDescription() {
+	public  String getDescription() {
 		return description;
 	}
 

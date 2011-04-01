@@ -28,33 +28,16 @@ public class OrderReceipt {
 
 		// print date, bill no, customer name
 
-		// prints orders
+	
 		BigDecimal salesTax = new BigDecimal("0");
 		BigDecimal totalAmount = new BigDecimal(0.0);
 		for (Order order : orders) {
-			output.append(order.getDescription());
-			output.append('\t');
-			output.append(order.getPrice());
-			output.append('\t');
-			output.append(order.getQuantity());
-			output.append('\t');
-			output.append(order.getPrice().multiply(
-					BigDecimal.valueOf(order.getQuantity())));
-			output.append('\n');
+			PrintOrder(output, order);
 
-			// calculate sales tax @ rate of 10%
-			salesTax = salesTax.add(order.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.multiply(BigDecimal.valueOf(.10)));
+			salesTax = salesTax.add(calculate10percentSalesTax(order));
 
-			// calculate total amount of order = price * quantity + 10 % sales
-			// tax
-			totalAmount = totalAmount.add(order
-					.getPrice()
-					.multiply(BigDecimal.valueOf(order.getQuantity()))
-					.add(order.getPrice()
-							.multiply(BigDecimal.valueOf(order.getQuantity()))
-							.multiply(BigDecimal.valueOf(.10))));
+			
+			totalAmount = totalAmount.add(calculateTotalTax(order));
 		}
 
 		// prints the state tax
@@ -64,4 +47,48 @@ public class OrderReceipt {
 		output.append("Total Amount").append('\t').append(totalAmount);
 		return output.toString();
 	}
+
+    /**
+     * @param output
+     * @param order
+     */
+    private void PrintOrder(StringBuilder output, Order order)
+    {
+        output.append(order.getDescription());
+        output.append('\t');
+        output.append(order.getPrice());
+        output.append('\t');
+        output.append(order.getQuantity());
+        output.append('\t');
+        output.append(order.getPrice().multiply(
+        		BigDecimal.valueOf(order.getQuantity())));
+        output.append('\n');
+    }
+
+    /**
+     * @param salesTax
+     * @param order
+     * @return
+     */
+    private BigDecimal calculate10percentSalesTax(Order order)
+    {
+        return order.getPrice()
+        		.multiply(BigDecimal.valueOf(order.getQuantity()))
+        		.multiply(BigDecimal.valueOf(.10));
+    }
+    
+    /**
+     * @param salesTax
+     * @param order
+     * @return
+     */
+    private BigDecimal calculateTotalTax(Order order)
+    {
+        return order
+        .getPrice()
+        .multiply(BigDecimal.valueOf(order.getQuantity()))
+        .add(order.getPrice()
+                .multiply(BigDecimal.valueOf(order.getQuantity()))
+                .multiply(BigDecimal.valueOf(.10)));
+    }
 }

@@ -2,13 +2,13 @@ package com.eric4tw.pair2;
 
 public class Position {
 	private int x, y;
-	private char direction;
+	private Direction myDirection;
 
-	public Position(int x, int y, char direction) {
+	public Position(int x, int y, Direction direction) {
 		super();
 		this.x = x;
 		this.y = y;
-		this.direction = direction;
+		this.myDirection = direction;
 	}
 
 	public int getX() {
@@ -27,11 +27,11 @@ public class Position {
 		this.y = y;
 	}
 
-	public char getDirection() {
-		return direction;
+	public Direction getDirection() {
+		return myDirection;
 	}
 
-	public void setDirection(char direction) {
-		this.direction = direction;
+	public void setDirection(Direction direction) {
+		this.myDirection = direction;
 	}
 }

@@ -7,12 +7,12 @@ import org.junit.Test;
 public class RoverTest {
 	@Test
 	public void turnsToWIfInstructionIsLAndDirectionIsN() {
-		Rover rover = new Rover(new Position(1, 1, 'N'));
+		Rover rover = new Rover(new Position(1, 1, Direction.N));
 		rover.command('L');
 		Position position = rover.getCurrent();
 		Assert.assertEquals(1, position.getX());
 		Assert.assertEquals(1, position.getY());
-		Assert.assertEquals('W', position.getDirection());
+		Assert.assertEquals(Direction.W, position.getDirection());
 	}
 
 	@Test
